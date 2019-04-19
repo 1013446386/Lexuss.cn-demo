@@ -1,0 +1,33 @@
+import ctypes
+#取用动态链接库11.dll(文件名自定义),给dll变量
+dll = ctypes.WinDLL('demo.dll')
+#使用字符串方式 调用dll内strs子程序,给txt
+txt = ctypes.string_at(dll.strs())
+#用utf-8输出dll.strs的返回值
+print(txt.decode('gbk'))
+
+#获取a/b数值
+a=int(input("A:"))
+b=int(input("B:"))
+#将a/b传给dll.add1,返回值给i()
+i = dll.add1(a,b)
+#输出dll.add1的返回值
+print(i)
+
+'''
+dll为e语言编写调用时与c语言编写无异
+.版本 2
+
+.子程序 add1, 整数型, 公开
+.参数 a
+.参数 b
+
+返回 (a ＋ b)
+
+
+.子程序 strs, 文本型, 公开
+
+返回 (“测试字符串abcABC123...1”)
+
+'''
+
