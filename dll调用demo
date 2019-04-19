@@ -3,7 +3,7 @@ import ctypes
 dll = ctypes.WinDLL('demo.dll')
 #使用字符串方式 调用dll内strs子程序,给txt
 txt = ctypes.string_at(dll.strs())
-#用utf-8输出dll.strs的返回值
+#输出dll.strs的返回值(gbk编码格式)
 print(txt.decode('gbk'))
 
 #获取a/b数值
